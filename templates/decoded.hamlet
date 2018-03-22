@@ -1,0 +1,4 @@
+<h1>Text:
+<p>#{text}
+<hr>
+<p><a href=@{DecoderR}>Get back

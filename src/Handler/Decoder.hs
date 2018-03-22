@@ -4,7 +4,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE QuasiQuotes #-}
-module Handler.Encoder where
+module Handler.Decoder where
 
 import Import
 import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3)
@@ -12,14 +12,14 @@ import Text.Julius (RawJS (..))
 import qualified Data.Text as T
 import Easycode
 
-getEncoderR :: Handler RepHtml
-getEncoderR = do
+getDecoderR :: Handler Html
+getDecoderR = do
     defaultLayout $ do
-        $(widgetFile "encoder")
+        $(widgetFile "decoder")
 
-postEncoderR :: Handler RepHtml
-postEncoderR = do
+postDecoderR :: Handler Html
+postDecoderR = do
     postedText <- runInputPost $ ireq textField "content"
     defaultLayout $ do
-        let text = Easycode.toCode . unpack $ postedText
-        $(widgetFile "encoded")
+        let text = Easycode.fromCode . unpack $ postedText
+        $(widgetFile "decoded")

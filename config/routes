@@ -16,3 +16,4 @@
 /echo/#Text EchoR GET
 
 /encoder EncoderR GET POST
+/decoder DecoderR GET POST

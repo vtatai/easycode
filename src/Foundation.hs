@@ -156,6 +156,7 @@ instance Yesod App where
     isAuthorized (StaticR _) _ = return Authorized
     isAuthorized (EchoR _) _ = return Authorized
     isAuthorized EncoderR _ = return Authorized
+    isAuthorized DecoderR _ = return Authorized
 
     isAuthorized ProfileR _ = isAuthenticated
 
